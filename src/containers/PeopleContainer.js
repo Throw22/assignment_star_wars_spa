@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-class PeopleContainer extends Component {
+class ResourceContainer extends Component {
   componentDidMount() {
-    //dispatch to check if there are people in state, or fetch
+    getResource();
   }
 
   render() {}
@@ -18,8 +18,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    //dispatch for getting people
+    getResource: () => {
+      dispatch(getResource(resourceType));
+    }, 
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(PeopleContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(ResourceContainer);

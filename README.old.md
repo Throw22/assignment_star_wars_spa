@@ -2,34 +2,40 @@
 May the SPA be with you...
 
 state = {
-	People: {
+	people: {
 		data: [],
 		isFetching: false,
-		error. null
+		error: null
 	},
-	Films: {
+	films: {
 		data: [],
 		isFetching: false,
-		error. null
+		error: null
 	},
-	Starships: {
+	starships: {
 		data: [],
 		isFetching: false,
-		error. null
+		error: null
 	},
-	Vehicles: {
+	vehicles: {
 		data: [],
 		isFetching: false,
-		error. null
+		error: null
 	},
-	Species: {
+	species: {
 		data: [],
 		isFetching: false,
-		error. null
+		error: null
 	},
-	Planets: {
+	planets: {
 		data: [],
 		isFetching: false,
-		error. null
+		error: null
 	},
+}
+
+state = {
+	data: [],
+	isFetching: false:
+	error: null
 }

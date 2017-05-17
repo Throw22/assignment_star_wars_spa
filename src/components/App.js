@@ -41,6 +41,7 @@ const App = () => (
 
       <Switch>
         <Route exact path="/" render={() => <h1>Home</h1>} />
+        <Route path="/people" component={ResourceContainer} />
         <Route render={() => <h1>Page not found</h1>} />
       </Switch>
 
