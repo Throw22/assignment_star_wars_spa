@@ -6,7 +6,7 @@ import {
   Switch
 } from 'react-router-dom';
 import ResourceListContainer from '../containers/ResourceListContainer';
-// import ResourceShowContainer from '../components/ResourceShowContainer';
+import ResourceShowContainer from '../containers/ResourceShowContainer';
 
 import ScrollToTop from './ScrollToTop';
 
@@ -43,6 +43,10 @@ const App = () => (
 
       <Switch>
         <Route exact path="/" render={() => <h1>Home</h1>} />
+        <Route
+          path="/resource/:resourceType/:id"
+          component={ResourceShowContainer}
+        />
         <Route
           path="/resource/:resourceType"
           component={ResourceListContainer}

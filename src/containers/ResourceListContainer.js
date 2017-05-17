@@ -41,7 +41,7 @@ class ResourceListContainer extends Component {
     if (
       this.props.match.params.resourceType != newProps.match.params.resourceType
     ) {
-      const resourceType = this.props.match.params.resourceType;
+      const resourceType = newProps.match.params.resourceType;
 
       switch (resourceType) {
         case 'people':

@@ -5,9 +5,10 @@ import { Link } from 'react-router-dom';
 let resourceList = resource => {
   if (!resource.results) return null;
   return resource.results.map(individualResource => {
-    let id = individualResource.url.split('/')[-2];
-    let resourceType = individualResource.url.split('/')[-3];
-    let displayName = resourceType === "film" ? individualResource.title : individualResource.name;
+    let urlParse = individualResource.url.split('/');
+    let id = urlParse[urlParse.length - 2];
+    let resourceType = urlParse[urlParse.length - 3];
+    let displayName = resourceType === "films" ? individualResource.title : individualResource.name;
     return (
       <Link key={displayName} to={`/resource/${resourceType}/${id}`}><p>{displayName}</p></Link>
     );
