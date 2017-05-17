@@ -9,16 +9,69 @@ import { getSpecies } from '../actions/speciesActions';
 import ResourceList from '../components/ResourceList';
 
 class ResourceListContainer extends Component {
+  //Component only mounts once (after it gets rendered the first time)
   componentDidMount() {
-    this.props.getResource();
+    const resourceType = this.props.match.params.resourceType;
+
+    switch (resourceType) {
+      case 'people':
+        this.props.getPeople();
+        break;
+      case 'planets':
+        this.props.getPlanets();
+        break;
+      case 'species':
+        this.props.getSpecies();
+        break;
+      case 'films':
+        this.props.getFilms();
+        break;
+      case 'vehicles':
+        this.props.getVehicles();
+        break;
+      case 'starships':
+        this.props.getStarships();
+        break;
+    }
   }
-  // componentWillReceiveProps() {
-  //   this.props.getResource();
-  // }
+
+  //will update any time match, history, or location change (as part of props)
+  componentWillReceiveProps(newProps) {
+    //Will need to add logic for pagination to if statement
+    if (
+      this.props.match.params.resourceType != newProps.match.params.resourceType
+    ) {
+      const resourceType = this.props.match.params.resourceType;
+
+      switch (resourceType) {
+        case 'people':
+          this.props.getPeople();
+          break;
+        case 'planets':
+          this.props.getPlanets();
+          break;
+        case 'species':
+          this.props.getSpecies();
+          break;
+        case 'films':
+          this.props.getFilms();
+          break;
+        case 'vehicles':
+          this.props.getVehicles();
+          break;
+        case 'starships':
+          this.props.getStarships();
+          break;
+      }
+    }
+  }
 
   render() {
     return (
-      <ResourceList resource={this.props.resource} isFetching={this.props.isFetching} />
+      <ResourceList
+        resource={this.props.resource}
+        isFetching={this.props.isFetching}
+      />
     );
   }
 }
@@ -32,28 +85,16 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  const resourceType = ownProps.match.params.resourceType;
-  let getResource;
-  switch(resourceType) {
-    case "people":
-      getResource = () => {
-          dispatch(getPeople());
-      }
-      break;
-    case "planets":
-      getResource = () => {
-          dispatch(getPlanets());
-      }
-      break;
-    case "films":
-      getResource = () => {
-          dispatch(getFilms());
-      }
-      break; 
-  }
-  return { getResource }
+  return {
+    getPeople: () => dispatch(getPeople()),
+    getPlanets: () => dispatch(getPlanets()),
+    getSpecies: () => dispatch(getSpecies()),
+    getFilms: () => dispatch(getFilms()),
+    getVehicles: () => dispatch(getVehicles()),
+    getStarships: () => dispatch(getStarships())
+  };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ResourceListContainer);
-
-
+export default connect(mapStateToProps, mapDispatchToProps)(
+  ResourceListContainer
+);
