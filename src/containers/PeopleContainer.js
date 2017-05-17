@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { getPeople } from '../actions/peopleActions'
+import People from '../components/People'
 
-class ResourceContainer extends Component {
+class PeopleContainer extends Component {
   componentDidMount() {
-    getResource();
+    this.props.getPeople();
   }
 
-  render() {}
+  render() {
+    return (
+      <People people={this.props.people} isFetching={this.props.isFetching} />
+    )
+  }
 }
 
 const mapStateToProps = state => {
@@ -18,10 +24,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getResource: () => {
-      dispatch(getResource(resourceType));
+    getPeople: () => {
+      dispatch(getPeople());
     }, 
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ResourceContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(PeopleContainer);

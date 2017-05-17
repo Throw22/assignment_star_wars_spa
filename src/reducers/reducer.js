@@ -1,9 +1,9 @@
-import * as PeopleActions from './peopleActions';
-import * as PlanetsActions from './planetsActions';
-import * as VehiclesActions from './vehiclesActions';
-import * as StarshipsActions from './starshipsActions';
-import * as SpeciesActions from './speciesActions';
-import * as FilmsActions from './filmsActions';
+import * as PeopleActions from '../actions/peopleActions';
+import * as PlanetsActions from '../actions/planetsActions';
+import * as VehiclesActions from '../actions/vehiclesActions';
+import * as StarshipsActions from '../actions/starshipsActions';
+import * as SpeciesActions from '../actions/speciesActions';
+import * as FilmsActions from '../actions/filmsActions';
 
 import { fetcher } from './helpers';
 
@@ -17,7 +17,7 @@ const starships = fetcher(StarshipsActions);
 const species = fetcher(SpeciesActions);
 const films = fetcher(FilmsActions);
 
-export default starwarsApp = combineReducers({
+export default combineReducers({
 	people,
 	planets,
 	vehicles,

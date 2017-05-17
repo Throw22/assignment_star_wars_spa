@@ -26,6 +26,8 @@ export function fetcher(Actions) {
           isFetching: false,
           error: action.error
         };
+      default:
+        return state;
     }
   };
 }

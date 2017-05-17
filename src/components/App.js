@@ -5,6 +5,7 @@ import {
   NavLink,
   Switch,
 } from 'react-router-dom'
+import PeopleContainer from '../containers/PeopleContainer';
 
 import ScrollToTop from './ScrollToTop'
 
@@ -41,7 +42,7 @@ const App = () => (
 
       <Switch>
         <Route exact path="/" render={() => <h1>Home</h1>} />
-        <Route path="/people" component={ResourceContainer} />
+        <Route path="/people" component={PeopleContainer} />
         <Route render={() => <h1>Page not found</h1>} />
       </Switch>
 

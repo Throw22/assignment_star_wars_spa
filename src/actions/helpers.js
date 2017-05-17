@@ -24,9 +24,25 @@ export function getFailure(type) {
   };
 }
 
-export function getResource(type, page = 1) {
-  return dispatch => {
-    //check for what kind of type, dispatch that type of request/success/failure?
-    fetch(`http://swapi.co/api/${type}/?page=${page}`);
-  };
+export function getResource(type, getRequest, getSuccess, getFailure) {
+  return function(page = 1) {
+    return dispatch => {
+
+      dispatch(getRequest());
+      //check for what kind of type, dispatch that type of request/success/failure?
+      fetch(`http://swapi.co/api/${type}/?page=${page}`)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Response not ok")
+            }
+            return response.json();
+        })
+        .then((json) => {
+            dispatch(getSuccess(json));
+        })
+        .catch((error) => {
+            dispatch(getFailure(error));
+        });
+    };
+  }
 }
