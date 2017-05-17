@@ -3,7 +3,7 @@ export const GET_SUCCESS = 'GET_SPECIES_SUCCESS';
 export const GET_FAILURE = 'GET_SPECIES_FAILURE';
 import { getRequest, getSuccess, getFailure, getResource } from './helpers';
 
-const getSpeciesRequest = getRequest(GET_REQUEST);
-const getSpeciesSuccess = getSuccess(GET_SUCCESS);
-const getSpeciesFailure = getRequest(GET_FAILURE);
-const getSpecies = getResource("species", getSpeciesRequest, getSpeciesSuccess, getSpeciesFailure)
+export const getSpeciesRequest = getRequest(GET_REQUEST);
+export const getSpeciesSuccess = getSuccess(GET_SUCCESS);
+export const getSpeciesFailure = getRequest(GET_FAILURE);
+export const getSpecies = getResource("species", getSpeciesRequest, getSpeciesSuccess, getSpeciesFailure)

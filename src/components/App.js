@@ -6,7 +6,7 @@ import {
   Switch
 } from 'react-router-dom';
 import ResourceListContainer from '../containers/ResourceListContainer';
-import ResourceShowContainer from '../components/ResourceShowContainer';
+// import ResourceShowContainer from '../components/ResourceShowContainer';
 
 import ScrollToTop from './ScrollToTop';
 
@@ -15,22 +15,22 @@ const NavLinks = () => (
     <NavLink activeClassName="active" exact to="/">
       Home
     </NavLink>{' '}
-    <NavLink activeClassName="active" exact to="/films">
+    <NavLink activeClassName="active" exact to="/resource/films">
       Films
     </NavLink>{' '}
-    <NavLink activeClassName="active" to="/people">
+    <NavLink activeClassName="active" to="/resource/people">
       People
     </NavLink>{' '}
-    <NavLink activeClassName="active" exact to="/planets">
+    <NavLink activeClassName="active" exact to="/resource/planets">
       Planets
     </NavLink>{' '}
-    <NavLink activeClassName="active" exact to="/species">
+    <NavLink activeClassName="active" exact to="/resource/species">
       Species
     </NavLink>{' '}
-    <NavLink activeClassName="active" to="/starships">
+    <NavLink activeClassName="active" to="/resource/starships">
       Starships
     </NavLink>
-    <NavLink activeClassName="active" to="/vehicles">
+    <NavLink activeClassName="active" to="/resource/vehicles">
       Vehicles
     </NavLink>
   </div>
@@ -44,12 +44,8 @@ const App = () => (
       <Switch>
         <Route exact path="/" render={() => <h1>Home</h1>} />
         <Route
-          path="resource/:resourceType"
+          path="/resource/:resourceType"
           component={ResourceListContainer}
-        />
-        <Route
-          path="/resource/:resourceType/:id"
-          component={ResourceShowContainer}
         />
         <Route render={() => <h1>Page not found</h1>} />
       </Switch>
