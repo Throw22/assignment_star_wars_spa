@@ -1,13 +1,14 @@
-import React from 'react'
+import React from 'react';
 import {
   BrowserRouter as Router,
   Route,
   NavLink,
-  Switch,
-} from 'react-router-dom'
-import PeopleContainer from '../containers/PeopleContainer';
+  Switch
+} from 'react-router-dom';
+import ResourceListContainer from '../containers/ResourceListContainer';
+import ResourceShowContainer from '../components/ResourceShowContainer';
 
-import ScrollToTop from './ScrollToTop'
+import ScrollToTop from './ScrollToTop';
 
 const NavLinks = () => (
   <div className="NavLinks">
@@ -31,9 +32,9 @@ const NavLinks = () => (
     </NavLink>
     <NavLink activeClassName="active" to="/vehicles">
       Vehicles
-    </NavLink>  
+    </NavLink>
   </div>
-)
+);
 
 const App = () => (
   <Router>
@@ -42,13 +43,20 @@ const App = () => (
 
       <Switch>
         <Route exact path="/" render={() => <h1>Home</h1>} />
-        <Route path="/people" component={PeopleContainer} />
+        <Route
+          path="resource/:resourceType"
+          component={ResourceListContainer}
+        />
+        <Route
+          path="/resource/:resourceType/:id"
+          component={ResourceShowContainer}
+        />
         <Route render={() => <h1>Page not found</h1>} />
       </Switch>
 
       <NavLinks />
     </ScrollToTop>
   </Router>
-)
+);
 
-export default App
+export default App;

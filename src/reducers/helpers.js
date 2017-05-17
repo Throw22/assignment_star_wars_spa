@@ -1,9 +1,8 @@
 const initialState = {
-  data: [],
+  data: {},
   isFetching: false,
   error: null
 };
-
 
 export function fetcher(Actions) {
   return function(state = initialState, action) {

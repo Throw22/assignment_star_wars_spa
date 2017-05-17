@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getPeople } from '../actions/peopleActions'
-import People from '../components/People'
+import { getPeople } from '../actions/peopleActions';
+import ResourceShowContainer from '../components/ResourceShowContainer';
 
 class PeopleContainer extends Component {
   componentDidMount() {
@@ -11,7 +11,7 @@ class PeopleContainer extends Component {
   render() {
     return (
       <People people={this.props.people} isFetching={this.props.isFetching} />
-    )
+    );
   }
 }
 
@@ -26,7 +26,7 @@ const mapDispatchToProps = dispatch => {
   return {
     getPeople: () => {
       dispatch(getPeople());
-    }, 
+    }
   };
 };
 
