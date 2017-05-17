@@ -29,7 +29,7 @@ const NavLinks = () => (
     </NavLink>{' '}
     <NavLink activeClassName="active" to="/resource/starships">
       Starships
-    </NavLink>
+    </NavLink>{' '}
     <NavLink activeClassName="active" to="/resource/vehicles">
       Vehicles
     </NavLink>

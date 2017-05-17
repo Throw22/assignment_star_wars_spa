@@ -7,6 +7,7 @@ import { getVehicles } from '../actions/vehiclesActions';
 import { getStarships } from '../actions/starshipsActions';
 import { getSpecies } from '../actions/speciesActions';
 import ResourceList from '../components/ResourceList';
+import Paginator from '../components/Paginator';
 
 class ResourceListContainer extends Component {
   //Component only mounts once (after it gets rendered the first time)
@@ -42,25 +43,26 @@ class ResourceListContainer extends Component {
       this.props.match.params.resourceType != newProps.match.params.resourceType
     ) {
       const resourceType = newProps.match.params.resourceType;
+      const page = newProps.match.params.page ? newProps.match.params.page : 1;
 
       switch (resourceType) {
         case 'people':
-          this.props.getPeople();
+          this.props.getPeople(page);
           break;
         case 'planets':
-          this.props.getPlanets();
+          this.props.getPlanets(page);
           break;
         case 'species':
-          this.props.getSpecies();
+          this.props.getSpecies(page);
           break;
         case 'films':
-          this.props.getFilms();
+          this.props.getFilms(page);
           break;
         case 'vehicles':
-          this.props.getVehicles();
+          this.props.getVehicles(page);
           break;
         case 'starships':
-          this.props.getStarships();
+          this.props.getStarships(page);
           break;
       }
     }
@@ -68,10 +70,14 @@ class ResourceListContainer extends Component {
 
   render() {
     return (
-      <ResourceList
-        resource={this.props.resource}
-        isFetching={this.props.isFetching}
-      />
+      <div>
+        <ResourceList
+          resource={this.props.resource}
+          isFetching={this.props.isFetching}
+        />
+
+        <Paginator />
+      </div>
     );
   }
 }
@@ -86,12 +92,12 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    getPeople: () => dispatch(getPeople()),
-    getPlanets: () => dispatch(getPlanets()),
-    getSpecies: () => dispatch(getSpecies()),
-    getFilms: () => dispatch(getFilms()),
-    getVehicles: () => dispatch(getVehicles()),
-    getStarships: () => dispatch(getStarships())
+    getPeople: page => dispatch(getPeople(page)),
+    getPlanets: page => dispatch(getPlanets(page)),
+    getSpecies: page => dispatch(getSpecies(page)),
+    getFilms: page => dispatch(getFilms(page)),
+    getVehicles: page => dispatch(getVehicles(page)),
+    getStarships: page => dispatch(getStarships(page))
   };
 };
 
