@@ -76,7 +76,7 @@ class ResourceListContainer extends Component {
           isFetching={this.props.isFetching}
         />
 
-        <Paginator />
+        <Paginator resource={this.props.resource} match={this.props.match} />
       </div>
     );
   }

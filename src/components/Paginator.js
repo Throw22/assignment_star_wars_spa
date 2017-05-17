@@ -11,9 +11,7 @@ const Paginator = ({ resource, match }) => {
   }
 
   const pageLinks = pageArr.map(function(page) {
-    return (
-      <Link>to={`/resource/${resourceType}/?page=${page}`}&gt;{page}</Link>
-    );
+    return <Link to={`/resource/${resourceType}/?page=${page}`}>{page}</Link>;
   });
 
   return (
